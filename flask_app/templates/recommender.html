@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Recommendations Page</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 20.00%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 500px) {
+  .column {
+    width: 100%;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+  <p>
+  Please enter your Steam ID:
+  </p>
+  <form action="/predict">
+
+    <br>
+    <input type="number" name="steam_id" value="{{steam_id}}">
+    
+    <br>
+    <input type="submit" value="Submit" method="get">
+
+  </form>
+
+  <p>
+  Recommendations for Steam ID {{steam_id}}:
+  </p>
+
+  <div class = "row">
+	{% for data in data_list[:5] %}
+
+	  <div class="column">
+		  <a href="https://store.steampowered.com/app/{{data['steam_appid']}}">
+			  <img src={{data['header_image']}} alt={{data['name']}} style="width:100%">
+		  </a>
+	  </div>
+	  
+	{% endfor %}
+  </div>
+  
+  <div class = "row">
+	{% for data in data_list[5:10] %}
+
+	  <div class="column">
+		  <a href="https://store.steampowered.com/app/{{data['steam_appid']}}">
+			  <img src={{data['header_image']}} alt={{data['name']}} style="width:100%">
+		  </a>
+	  </div>
+	  
+	{% endfor %}
+  </div>
+
+  <p>
+  Top games in the last 2 weeks:
+  </p>
+
+  <div class = "row">
+	{% for data in top_data_list[:5] %}
+	  <div class="column">
+		  <a href="https://store.steampowered.com/app/{{data['steam_appid']}}">
+			  <img src={{data['header_image']}} alt={{data['name']}} style="width:100%">
+		  </a>
+	  </div>
+	  
+	{% endfor %}
+  </div>
+
+  <div class = "row">
+	{% for data in top_data_list[5:] %}
+	  <div class="column">
+		  <a href="https://store.steampowered.com/app/{{data['steam_appid']}}">
+			  <img src={{data['header_image']}} alt={{data['name']}} style="width:100%">
+		  </a>
+	  </div>
+	  
+	{% endfor %}
+  </div>
+
+
+</body>
+
+</html>

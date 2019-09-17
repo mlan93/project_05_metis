@@ -1,0 +1,1 @@
+Note: this file would ordinarily contain your key to the Steamworks API.

@@ -1,0 +1,1 @@
+Note: this folder would ordinarily contain the trained ALS model for recommendations. This was not uploaded to Github due to file size limitations.
